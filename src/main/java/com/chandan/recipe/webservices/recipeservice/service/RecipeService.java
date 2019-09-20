@@ -33,17 +33,11 @@ public class RecipeService {
      * @return a recipe object
      */
     //Trying to implement HATEOS concept here
-    @Transactional
     public Recipe findRecipe(int id) {
-        final Optional<Recipe> recipe = recipeRepository.findById(id);
-        if (!recipe.isPresent()) {
-            throw new RecipeNotFoundException("ID NOT FOUND -->>  " + id);
-        }
+        return recipeRepository.findById(id).orElseThrow(() ->  new RecipeNotFoundException("ID NOT FOUND -->>  " + id));
 /*        final Resource<Recipe> recipeResource = new Resource<>(recipe.get());
         final ControllerLinkBuilder linkTo = linkTo(ControllerLinkBuilder.methodOn(this.getClass()).getAllRecipe());
         recipeResource.add(linkTo.withRel("all-recipe"));*/
-
-        return recipe.get();
     }
 
     /**
@@ -51,7 +45,6 @@ public class RecipeService {
      * @param recipe which is a complete recipe object
      * @return a Recipe object which is saved in data base
      */
-    @Transactional
     public Recipe saveRecipe(Recipe recipe) {
         return recipeRepository.save(recipe);
     }
@@ -60,7 +53,6 @@ public class RecipeService {
      *
      * @param id which is the id object to be removed
      */
-    @Transactional
     public void removeRecipe(int id) {
         recipeRepository.deleteById(id);
     }

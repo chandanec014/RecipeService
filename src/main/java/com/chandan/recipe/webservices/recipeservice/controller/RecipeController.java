@@ -13,8 +13,11 @@ import java.util.List;
 @RequestMapping("/recipe-service/v1")
 public class RecipeController {
 
-    @Autowired
     private RecipeService recipeService;
+
+    public RecipeController(RecipeService recipeService){
+        this.recipeService = recipeService;
+    }
 
     @GetMapping("/recipes")
     public List<Recipe> retrieveAllRecipe() {

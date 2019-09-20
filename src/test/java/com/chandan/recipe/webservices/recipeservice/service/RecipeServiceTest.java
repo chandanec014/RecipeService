@@ -16,8 +16,8 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.*;
+import static org.mockito.Mockito.*;
 
 @RunWith(MockitoJUnitRunner.class)
 public class RecipeServiceTest {
@@ -36,7 +36,7 @@ public class RecipeServiceTest {
 
     @Test
     public void testGetAllRecipe() {
-        Mockito.when(mockRepository.findAll()).thenReturn(RecipeUtil.getAllRecipe());
+        when(mockRepository.findAll()).thenReturn(RecipeUtil.getAllRecipe());
         final List<Recipe> allRecipe = recipeService.getAllRecipe();
         assertFalse(allRecipe.isEmpty());
     }
@@ -44,7 +44,7 @@ public class RecipeServiceTest {
     @Test
     public void testFindRecipe() {
         int id = 10;
-        Mockito.when(mockRepository.findById(id)).thenReturn(RecipeUtil.getRecipe());
+        when(mockRepository.findById(id)).thenReturn(RecipeUtil.getRecipe());
         final Recipe recipe = recipeService.findRecipe(id);
         assertNotNull(recipe.getIngredients());
     }
@@ -54,7 +54,7 @@ public class RecipeServiceTest {
         Calendar cal = Calendar.getInstance();
         cal.add(Calendar.DAY_OF_YEAR, -365);
         Date pastDate = cal.getTime();
-        Mockito.when(mockRepository.save(Mockito.any())).thenReturn(Mockito.any());
+        when(mockRepository.save(Mockito.any())).thenReturn(Mockito.any());
         recipeService.saveRecipe(new Recipe(100, pastDate, Boolean.TRUE, 6, "milk with cashew nuts", "boil in medium temperature"));
     }
 
@@ -62,5 +62,6 @@ public class RecipeServiceTest {
     public void testRemoveRecipe() {
         int id = 20;
         recipeService.removeRecipe(id);
+
     }
 }
