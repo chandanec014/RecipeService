@@ -3,10 +3,10 @@ package com.chandan.recipe.webservices.recipeservice.jwt.resource;
 import java.io.Serializable;
 
 public class  JwtTokenRequest implements Serializable {
-  
-  private static final long serialVersionUID = -5616176897013108345L;
 
-  private String username;
+    private static final long serialVersionUID = -5616176897013108345L;
+
+    private String username;
     private String password;
 
     public JwtTokenRequest() {

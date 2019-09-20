@@ -71,7 +71,7 @@ public class JwtTokenUtil implements Serializable {
     final Date expirationDate = calculateExpirationDate(createdDate);
 
     return Jwts.builder().setClaims(claims).setSubject(subject).setIssuedAt(createdDate)
-        .setExpiration(expirationDate).signWith(SignatureAlgorithm.HS512, secret).compact();
+            .setExpiration(expirationDate).signWith(SignatureAlgorithm.HS512, secret).compact();
   }
 
   public Boolean canTokenBeRefreshed(String token) {
