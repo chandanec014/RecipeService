@@ -3,6 +3,7 @@ package com.chandan.recipe.webservices.recipeservice.controller;
 
 import com.chandan.recipe.webservices.recipeservice.entity.Recipe;
 import com.chandan.recipe.webservices.recipeservice.service.RecipeService;
+import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -11,11 +12,13 @@ import java.util.List;
 
 @RestController()
 @RequestMapping("/recipe-service/v1")
+@Api(value = "Recipe Management System")
 public class RecipeController {
 
-    private RecipeService recipeService;
+    private final RecipeService recipeService;
 
-    public RecipeController(RecipeService recipeService){
+    @Autowired
+    public RecipeController(RecipeService recipeService) {
         this.recipeService = recipeService;
     }
 
@@ -25,12 +28,12 @@ public class RecipeController {
     }
 
     @GetMapping("/recipes/{id}")
-    public Recipe getRecipe(@PathVariable int id){
+    public Recipe getRecipe(@PathVariable int id) {
         return recipeService.findRecipe(id);
     }
 
     @PostMapping("/recipes")
-    public void createRecipe( @Valid @RequestBody Recipe recipe) {
+    public void createRecipe(@Valid @RequestBody Recipe recipe) {
         recipeService.saveRecipe(recipe);
     }
 

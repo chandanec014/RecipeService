@@ -1,3 +1,4 @@
+
 package com.chandan.recipe.webservices.recipeservice.jwt;
 
 import java.util.ArrayList;
@@ -32,5 +33,6 @@ public class JwtInMemoryUserDetailsService implements UserDetailsService {
     }
 
 }
+
 
 

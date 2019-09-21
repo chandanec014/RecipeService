@@ -28,20 +28,18 @@ public class RecipeService {
     }
 
     /**
-     *
      * @param id which is the id of the recipe object
      * @return a recipe object
      */
     //Trying to implement HATEOS concept here
     public Recipe findRecipe(int id) {
-        return recipeRepository.findById(id).orElseThrow(() ->  new RecipeNotFoundException("ID NOT FOUND -->>  " + id));
+        return recipeRepository.findById(id).orElseThrow(() -> new RecipeNotFoundException("ID NOT FOUND -->>  " + id));
 /*        final Resource<Recipe> recipeResource = new Resource<>(recipe.get());
         final ControllerLinkBuilder linkTo = linkTo(ControllerLinkBuilder.methodOn(this.getClass()).getAllRecipe());
         recipeResource.add(linkTo.withRel("all-recipe"));*/
     }
 
     /**
-     *
      * @param recipe which is a complete recipe object
      * @return a Recipe object which is saved in data base
      */
@@ -50,7 +48,6 @@ public class RecipeService {
     }
 
     /**
-     *
      * @param id which is the id object to be removed
      */
     public void removeRecipe(int id) {

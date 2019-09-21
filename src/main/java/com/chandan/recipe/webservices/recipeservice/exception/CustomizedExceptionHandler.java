@@ -29,7 +29,7 @@ public class CustomizedExceptionHandler extends ResponseEntityExceptionHandler {
     }
 
 
-   @Override
+    @Override
     protected ResponseEntity<Object> handleMethodArgumentNotValid(
             MethodArgumentNotValidException ex, HttpHeaders headers, HttpStatus status, WebRequest request) {
         ExceptionResponse exceptionResponse = new ExceptionResponse(new Date(), "Validation Failed", ex.getBindingResult().toString());

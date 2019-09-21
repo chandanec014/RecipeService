@@ -55,6 +55,7 @@ public class JWTWebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity httpSecurity) throws Exception {
+
         httpSecurity
                 .csrf().disable()
                 .exceptionHandling().authenticationEntryPoint(jwtUnAuthorizedResponseAuthenticationEntryPoint).and()
@@ -65,6 +66,7 @@ public class JWTWebSecurityConfig extends WebSecurityConfigurerAdapter {
         httpSecurity
                 .addFilterBefore(jwtAuthenticationTokenFilter, UsernamePasswordAuthenticationFilter.class);
 
+
         httpSecurity
                 .headers()
                 .frameOptions().sameOrigin()  //H2 Console Needs this setting
@@ -73,6 +75,7 @@ public class JWTWebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     public void configure(WebSecurity webSecurity) throws Exception {
+
         webSecurity
                 .ignoring()
                 .antMatchers(
@@ -88,7 +91,13 @@ public class JWTWebSecurityConfig extends WebSecurityConfigurerAdapter {
                 )
                 .and()
                 .ignoring()
-                .antMatchers("/h2-console/**/**");//Should not be in Production!
+                .antMatchers("/h2-console/**/**")
+                .and().ignoring().antMatchers("/swagger-ui.html")
+                .and().ignoring().antMatchers("/v2/api-docs/**")
+                .and().ignoring().antMatchers("/swagger.json");
+
+
+
     }
 }
 
