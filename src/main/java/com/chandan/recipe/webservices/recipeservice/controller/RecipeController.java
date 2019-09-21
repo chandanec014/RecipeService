@@ -5,6 +5,7 @@ import com.chandan.recipe.webservices.recipeservice.entity.Recipe;
 import com.chandan.recipe.webservices.recipeservice.service.RecipeService;
 import io.swagger.annotations.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -53,5 +54,13 @@ public class RecipeController {
     @DeleteMapping("/recipes/{id}")
     public void deleteRecipe(@ApiParam(value = "Recipe Id from which recipe object will deleted from database table", required = true) @PathVariable(value = "id") int id) {
         recipeService.removeRecipe(id);
+    }
+
+    @PutMapping("/recipes/{id}")
+    public ResponseEntity<Recipe> updateRecipe(
+            @PathVariable int id,
+            @RequestBody Recipe recipeDetails
+    ) {
+        return  recipeService.updateRecipeById(id, recipeDetails);
     }
 }

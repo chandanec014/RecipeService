@@ -4,8 +4,11 @@ import com.chandan.recipe.webservices.recipeservice.dao.RecipeRepository;
 import com.chandan.recipe.webservices.recipeservice.entity.Recipe;
 import com.chandan.recipe.webservices.recipeservice.exception.RecipeNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.List;
 import java.util.Optional;
@@ -52,6 +55,25 @@ public class RecipeService {
      */
     public void removeRecipe(int id) {
         recipeRepository.deleteById(id);
+    }
+
+
+    /**
+     *
+     * @param id for which the recipe to be modified
+     * @param recipeDetails is the recipe object which contains the property to be modified
+     * @return updated recipe Object
+     */
+    public ResponseEntity<Recipe> updateRecipeById(int id, Recipe recipeDetails) {
+        final Recipe recipe = recipeRepository.findById(id)
+                .orElseThrow(() -> new RecipeNotFoundException("Recipe not found for the given Id :: -->>" + id));
+        recipe.setCreation(recipeDetails.getCreation());
+        recipe.setSufficientForPeople(recipeDetails.getSufficientForPeople());
+        recipe.setIngredients(recipeDetails.getIngredients());
+        recipe.setCookingInstructions(recipeDetails.getCookingInstructions());
+        recipe.setVegetarian(recipeDetails.isVegetarian());
+        final Recipe updatedRecipe = recipeRepository.save(recipe);
+        return ResponseEntity.ok(updatedRecipe);
     }
 
 }

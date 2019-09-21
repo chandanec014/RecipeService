@@ -4,38 +4,45 @@ package com.chandan.recipe.webservices.recipeservice.entity;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Past;
 import javax.validation.constraints.Size;
 import java.util.Date;
 
 @Entity
+@Table(name = "recipe")
 @ApiModel(description = "All details about the recipe")
 public class Recipe {
 
     @Id
     @GeneratedValue
+    @ApiModelProperty(notes = "The database generated recipe ID")
     private int id;
 
     @Past
-    @ApiModelProperty(notes = "Create date should be in past")
+    @Column(name = "creation", nullable = false)
+    @ApiModelProperty(notes = "Date of creation of the recipe")
     private Date creation;
 
     @NotNull
+    @Column(name = "is_vegetarian", nullable = false)
+    @ApiModelProperty(notes = "Indicator if the dish is vegetarian")
     private boolean isVegetarian;
 
     @NotNull
+    @Column(name = "sufficient_for_people", nullable = false)
+    @ApiModelProperty(notes = "Indicator displaying the number of people the dish is suitable for")
     private int sufficientForPeople;
 
+    @Column(name = "ingredients")
     @Size(min = 2, message = "Ingredients should have at least 2 characters")
-    @ApiModelProperty(notes = "Ingredients should have at least 2 characters")
+    @ApiModelProperty(notes = "Unstructured list of ingredients which is used for the recipe")
     private String ingredients;
 
+    @Column(name = "cooking_instructions")
     @Size(min = 5, message = "cookingInstructions should have at least 5 characters")
-    @ApiModelProperty(notes = "cookingInstructions should have at least 5 characters")
+    @ApiModelProperty(notes = "Cooking instructions for the recipe")
     private String cookingInstructions;
 
 
