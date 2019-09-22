@@ -18,7 +18,7 @@ Below are the list which we have used to develop our application:
 - H2 as in memory database.
 - JPA as a Hibernate Implementation.
 - JWT as a framework for Authentication.
-- SPRING SECURITY as a framework to impose security to our application.
+- SPRING SECURITY as a framework to impose security to our API's.
 - MOCKITO framework for writing JUnits.
 - HAMCREST Library for the Matchers and Assertions in test cases.
 - SPRING TEST module for writing Integration test.
@@ -103,7 +103,7 @@ Below is the link for it.
 
 [API Documentation](http://localhost:8080/v2/api-docs)
 
-##User Friendly Swagger UI Html:
+## User Friendly Swagger UI Html:
 Last but not the least, have added a user friendly Swagger UI Html.
 
 [Swagger-UI-Html](http://localhost:8080/swagger-ui.html)
@@ -114,4 +114,6 @@ Last but not the least, have added a user friendly Swagger UI Html.
 
 ## Thank you and welcome everyone to use our Application..!!!
 
-
+- For any Queries, please reach out to me on below communication channel
+- Email = chandan.kle@gmail.com
+- Mobile = +31 644274503
