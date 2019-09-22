@@ -1,8 +1,11 @@
+/**
+ * ---------------------------------------------------------------
+ * The complete copyright of the code belongs to Chandan Kumar
+ * ---------------------------------------------------------------
+ */
 package com.chandan.recipe.webservices.recipeservice;
 
-
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import springfox.documentation.builders.ApiInfoBuilder;
 import springfox.documentation.builders.PathSelectors;

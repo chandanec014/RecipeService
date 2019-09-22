@@ -1,3 +1,8 @@
+/**
+ * ---------------------------------------------------------------
+ * The complete copyright of the code belongs to Chandan Kumar
+ * ---------------------------------------------------------------
+ */
 package com.chandan.recipe.webservices.recipeservice;
 
 import org.junit.Test;
@@ -12,5 +17,4 @@ public class RecipeServiceApplicationTests {
     @Test
     public void contextLoads() {
     }
-
 }

@@ -1,14 +1,18 @@
-
+/**
+ * ---------------------------------------------------------------
+ * The complete copyright of the code belongs to Chandan Kumar
+ * ---------------------------------------------------------------
+ */
 package com.chandan.recipe.webservices.recipeservice.jwt;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
 
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
 
 @Service
 public class JwtInMemoryUserDetailsService implements UserDetailsService {

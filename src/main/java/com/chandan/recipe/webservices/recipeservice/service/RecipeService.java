@@ -1,3 +1,8 @@
+/**
+ * ---------------------------------------------------------------
+ * The complete copyright of the code belongs to Chandan Kumar
+ * ---------------------------------------------------------------
+ */
 package com.chandan.recipe.webservices.recipeservice.service;
 
 import com.chandan.recipe.webservices.recipeservice.dao.RecipeRepository;
@@ -6,15 +11,16 @@ import com.chandan.recipe.webservices.recipeservice.exception.RecipeNotFoundExce
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.List;
-import java.util.Optional;
 
 /**
- * This class acts as service class in bussiness layer to perform operation
+ * This class acts as business layer to perform various business related logic
+ * Also indicate that a class is a "Business Service Facade" (in the Core J2EE
+ * patterns sense), or something similar
+ *
+ * @author Chandan Kumar
+ * @since 0.0.1
  */
 @Service
 public class RecipeService {
@@ -24,22 +30,19 @@ public class RecipeService {
 
     /**
      * @param
-     * @return List of Recipe objects
+     * @return a list of Recipe objects from database
      */
     public List<Recipe> getAllRecipe() {
         return recipeRepository.findAll();
     }
 
     /**
-     * @param id which is the id of the recipe object
-     * @return a recipe object
+     * @param id is the id of the recipe object
+     * @return a recipe object for the given id
      */
-    //Trying to implement HATEOS concept here
     public Recipe findRecipe(int id) {
-        return recipeRepository.findById(id).orElseThrow(() -> new RecipeNotFoundException("ID NOT FOUND -->>  " + id));
-/*        final Resource<Recipe> recipeResource = new Resource<>(recipe.get());
-        final ControllerLinkBuilder linkTo = linkTo(ControllerLinkBuilder.methodOn(this.getClass()).getAllRecipe());
-        recipeResource.add(linkTo.withRel("all-recipe"));*/
+        return recipeRepository.findById(id)
+                .orElseThrow(() -> new RecipeNotFoundException("ID NOT FOUND -->>  " + id));
     }
 
     /**
@@ -51,22 +54,20 @@ public class RecipeService {
     }
 
     /**
-     * @param id which is the id object to be removed
+     * @param id is the recipe id for the object to be removed
      */
     public void removeRecipe(int id) {
         recipeRepository.deleteById(id);
     }
 
-
     /**
-     *
-     * @param id for which the recipe to be modified
+     * @param id is the id of the recipe object
      * @param recipeDetails is the recipe object which contains the property to be modified
      * @return updated recipe Object
      */
     public ResponseEntity<Recipe> updateRecipeById(int id, Recipe recipeDetails) {
         final Recipe recipe = recipeRepository.findById(id)
-                .orElseThrow(() -> new RecipeNotFoundException("Recipe not found for the given Id :: -->>" + id));
+                .orElseThrow(() -> new RecipeNotFoundException("ID NOT FOUND -->>  " + id));
         recipe.setCreation(recipeDetails.getCreation());
         recipe.setSufficientForPeople(recipeDetails.getSufficientForPeople());
         recipe.setIngredients(recipeDetails.getIngredients());
@@ -75,5 +76,4 @@ public class RecipeService {
         final Recipe updatedRecipe = recipeRepository.save(recipe);
         return ResponseEntity.ok(updatedRecipe);
     }
-
 }

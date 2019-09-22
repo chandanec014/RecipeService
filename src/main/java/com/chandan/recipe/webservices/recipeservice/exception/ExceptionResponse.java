@@ -1,7 +1,19 @@
+/**
+ * ---------------------------------------------------------------
+ * The complete copyright of the code belongs to Chandan Kumar
+ * ---------------------------------------------------------------
+ */
 package com.chandan.recipe.webservices.recipeservice.exception;
 
 import java.util.Date;
 
+/**
+ * This class acts as general exception template to be used in our Recipe Service Application.
+ * Same Exception template would be used across the application as have Common response for various Exceptions.
+ *
+ * @author Chandan Kumar
+ * @since 0.0.1
+ */
 public class ExceptionResponse {
 
     private Date timeStamp;

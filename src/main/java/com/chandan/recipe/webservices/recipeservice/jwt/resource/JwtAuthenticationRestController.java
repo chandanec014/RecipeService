@@ -1,10 +1,12 @@
-
+/**
+ * ---------------------------------------------------------------
+ * The complete copyright of the code belongs to Chandan Kumar
+ * ---------------------------------------------------------------
+ */
 package com.chandan.recipe.webservices.recipeservice.jwt.resource;
 
-import java.util.Objects;
-
-import javax.servlet.http.HttpServletRequest;
-
+import com.chandan.recipe.webservices.recipeservice.jwt.JwtTokenUtil;
+import com.chandan.recipe.webservices.recipeservice.jwt.JwtUserDetails;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
@@ -15,15 +17,10 @@ import org.springframework.security.authentication.DisabledException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.ExceptionHandler;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
-import com.chandan.recipe.webservices.recipeservice.jwt.JwtTokenUtil;
-import com.chandan.recipe.webservices.recipeservice.jwt.JwtUserDetails;
+import javax.servlet.http.HttpServletRequest;
+import java.util.Objects;
 
 @RestController
 public class JwtAuthenticationRestController {
