@@ -1,8 +1,3 @@
-/**
- * ---------------------------------------------------------------
- * The complete copyright of the code belongs to Chandan Kumar
- * ---------------------------------------------------------------
- */
 package com.chandan.recipe.webservices.recipeservice.jwt;
 
 import org.springframework.beans.factory.annotation.Autowired;
