@@ -11,6 +11,12 @@ import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
+/**
+ * This class acts as a Configuration file for Swagger Documentation
+ *
+ * @author Chandan Kumar
+ * @since 0.0.1
+ */
 @Configuration
 @EnableSwagger2
 public class SwaggerConfig {
@@ -24,7 +30,7 @@ public class SwaggerConfig {
     }
 
     private ApiInfo apiEndPointsInfo() {
-        return new ApiInfoBuilder().title("Recipe Service API Title")
+        return new ApiInfoBuilder().title("Recipe Service Application")
                 .description("Recipe Service API Documentation")
                 .contact(new Contact("Chandan Kumar", "http://www.learningWithChandan.com", "chandan.kumar@gmail.com"))
                 .license("Apache 2.0")

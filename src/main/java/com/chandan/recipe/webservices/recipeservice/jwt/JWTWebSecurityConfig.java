@@ -18,6 +18,13 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
+/**
+ * This Class acts as a configuration class for Spring Security
+ * and helps to secure our exposed URI's through Authentication
+ *
+ * @author Chandan Kumar
+ * @since 0.0.1
+ */
 @Configuration
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(prePostEnabled = true)
@@ -66,7 +73,6 @@ public class JWTWebSecurityConfig extends WebSecurityConfigurerAdapter {
         httpSecurity
                 .addFilterBefore(jwtAuthenticationTokenFilter, UsernamePasswordAuthenticationFilter.class);
 
-
         httpSecurity
                 .headers()
                 .frameOptions().sameOrigin()  //H2 Console Needs this setting
@@ -92,8 +98,8 @@ public class JWTWebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .ignoring()
                 .antMatchers("/h2-console/**/**")
-                .and().ignoring().antMatchers("**")
-                // .and().ignoring().antMatchers("/swagger-ui.html")
+               // .and().ignoring().antMatchers("**")
+                .and().ignoring().antMatchers("/swagger-ui.html")
                 .and().ignoring().antMatchers("/v2/api-docs/**")
                 .and().ignoring().antMatchers("/swagger.json");
     }

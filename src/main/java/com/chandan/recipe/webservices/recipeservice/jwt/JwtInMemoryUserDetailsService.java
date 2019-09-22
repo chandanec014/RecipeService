@@ -23,14 +23,11 @@ public class JwtInMemoryUserDetailsService implements UserDetailsService {
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         Optional<JwtUserDetails> findFirst = inMemoryUserList.stream()
                 .filter(user -> user.getUsername().equals(username)).findFirst();
-
         if (!findFirst.isPresent()) {
             throw new UsernameNotFoundException(String.format("USER_NOT_FOUND '%s'.", username));
         }
-
         return findFirst.get();
     }
-
 }
 
 

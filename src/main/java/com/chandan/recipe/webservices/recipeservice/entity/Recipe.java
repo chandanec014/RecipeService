@@ -44,7 +44,6 @@ public class Recipe {
     @ApiModelProperty(notes = "Cooking instructions for the recipe")
     private String cookingInstructions;
 
-
     public Recipe() {
     }
 
