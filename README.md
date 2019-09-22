@@ -40,4 +40,7 @@ Our project consist of several layers. For the simplicity, I have drawn a high l
 - [model package](https://p-bitbucket.nl.eu.abnamro.com:7999/users/c65598/repos/recipeservice/browse/src/main/java/com/chandan/recipe/webservices/recipeservice/entity)
 - [security package](https://p-bitbucket.nl.eu.abnamro.com:7999/users/c65598/repos/recipeservice/browse/src/main/java/com/chandan/recipe/webservices/recipeservice/jwt)
 
+You can see the logical representation below of these packages:
+
+
 
