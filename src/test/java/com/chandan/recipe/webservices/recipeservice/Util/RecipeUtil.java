@@ -22,7 +22,6 @@ public class RecipeUtil {
 
     public static Optional<Recipe> getRecipe(){
         final Recipe recipe = new Recipe(10, new Date(), Boolean.TRUE, 4, "Potato", "Cook in high temperature");
-        //return recipe;
         return Optional.ofNullable(recipe);
     }
 
@@ -37,6 +36,11 @@ public class RecipeUtil {
         return new Recipe(pastDate, Boolean.TRUE, 6, "milk with cashew nuts", "boil in medium temperature");
     }
 
+    public static Recipe getRecipeToBeUpdated(){
+        Recipe recipeDetails = new Recipe(12, new Date(), Boolean.TRUE, 15, "Paneer, Rice", "Cook in medium temperature");
+        return recipeDetails;
+    }
+
     public static Recipe getRecipeWithoutGivingId(){
 
         Calendar cal = Calendar.getInstance();
@@ -45,6 +49,11 @@ public class RecipeUtil {
         Recipe recipe = new Recipe(pastDate, Boolean.TRUE, 6, "milk with cashew nuts", "boil in medium temperature");
         System.out.println(recipe);
         return recipe;
+    }
+
+    public static Recipe getInvalidRecipe(){
+        Recipe invalidRecipe = new Recipe( 10,new Date(), Boolean.TRUE, 15, "Paneer, Rice", "Cook");
+        return invalidRecipe;
     }
 
     public static URI getURI(){
