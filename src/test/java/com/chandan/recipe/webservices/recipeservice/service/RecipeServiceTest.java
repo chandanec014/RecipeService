@@ -44,7 +44,7 @@ public class RecipeServiceTest {
     RecipeRepository mockRepository;
 
     @Before
-    public void setUp() throws Exception {
+    public void setUp() {
         MockitoAnnotations.initMocks(this);
     }
 
@@ -64,7 +64,7 @@ public class RecipeServiceTest {
     }
 
     @Test(expected = RecipeNotFoundException.class)
-    public void testFindRecipe_withInvalidId(){
+    public void testFindRecipe_withInvalidId() {
         int id = -1;
         recipeService.findRecipe(id);
     }
@@ -79,7 +79,7 @@ public class RecipeServiceTest {
     }
 
     @Test()
-    public void testSaveRecipe_withInvalid_cookingInstructions_as_input(){
+    public void testSaveRecipe_withInvalid_cookingInstructions_as_input() {
         Calendar cal = Calendar.getInstance();
         cal.add(Calendar.DAY_OF_YEAR, -365);
         Date pastDate = cal.getTime();
@@ -89,7 +89,7 @@ public class RecipeServiceTest {
     }
 
     @Test()
-    public void testSaveRecipe_withInvalid_ingredients_as_input(){
+    public void testSaveRecipe_withInvalid_ingredients_as_input() {
         Calendar cal = Calendar.getInstance();
         cal.add(Calendar.DAY_OF_YEAR, -365);
         Date pastDate = cal.getTime();
@@ -99,7 +99,7 @@ public class RecipeServiceTest {
     }
 
     @Test()
-    public void testSaveRecipe_byGiving_createDate_as_Null(){
+    public void testSaveRecipe_byGiving_createDate_as_Null() {
         Calendar cal = Calendar.getInstance();
         cal.add(Calendar.DAY_OF_YEAR, -365);
         when(mockRepository.save(Mockito.any())).thenReturn(Mockito.any());
@@ -128,5 +128,21 @@ public class RecipeServiceTest {
         int id = -1;
         Recipe recipeDetails = RecipeUtil.getRecipeToBeUpdated();
         recipeService.updateRecipeById(id, recipeDetails);
+    }
+
+    @Test
+    public void testUpdateRecipeById_withInvalidData_asCookingInstructions() {
+        int id = 12;
+        when(mockRepository.findById(id)).thenReturn(RecipeUtil.getRecipe());
+        recipeService.updateRecipeById(12, RecipeUtil.getInvalidRecipe());
+        verify(mockRepository, never()).save(RecipeUtil.getInvalidRecipe());
+    }
+
+    @Test
+    public void testUpdateRecipeById_withInvalidInput_likeCreateDate_as_Null() {
+        int id = 12;
+        when(mockRepository.findById(id)).thenReturn(RecipeUtil.getRecipe());
+        recipeService.updateRecipeById(12, RecipeUtil.getInvalidRecipeWithDateAsNull());
+        verify(mockRepository, never()).save(RecipeUtil.getInvalidRecipe());
     }
 }

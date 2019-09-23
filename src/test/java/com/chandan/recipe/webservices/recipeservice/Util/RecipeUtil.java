@@ -9,11 +9,16 @@ import java.util.List;
 import java.util.Optional;
 import java.util.Calendar;
 
+/**
+ * This class acts as a utility class to feed dummy data to the test cases
+ *
+ * @author Chandan Kumar
+ * @since 0.0.1
+ */
 public class RecipeUtil {
 
     public static List<Recipe> getAllRecipe(){
         final ArrayList<Recipe> recipes = new ArrayList<>();
-
         recipes.add(new Recipe(100, new Date(), Boolean.TRUE, 2, "Potato", "Cook in high temperature"));
         recipes.add(new Recipe(101, new Date(), Boolean.TRUE, 4, "Rice", "Cook in Pressure Cooker"));
         recipes.add(new Recipe(102, new Date(), Boolean.FALSE, 6, "Rice, Chicken and Black Pepper", "Cook in low flame"));
@@ -42,7 +47,6 @@ public class RecipeUtil {
     }
 
     public static Recipe getRecipeWithoutGivingId(){
-
         Calendar cal = Calendar.getInstance();
         cal.add(Calendar.DAY_OF_YEAR, -365);
         Date pastDate = cal.getTime();
@@ -53,6 +57,11 @@ public class RecipeUtil {
 
     public static Recipe getInvalidRecipe(){
         Recipe invalidRecipe = new Recipe( 10,new Date(), Boolean.TRUE, 15, "Paneer, Rice", "Cook");
+        return invalidRecipe;
+    }
+
+    public static Recipe getInvalidRecipeWithDateAsNull(){
+        Recipe invalidRecipe = new Recipe( 10,null, Boolean.TRUE, 15, "Paneer, Rice", "Cook");
         return invalidRecipe;
     }
 
