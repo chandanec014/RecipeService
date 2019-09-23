@@ -45,7 +45,7 @@ You can see the logical representation below of these packages:
 
 Let's take a detailed look;
 
-- Server Configuration
+## Server Configuration
 &nbsp;&nbsp;&nbsp;&nbsp;The default configuration port is 8080, however we may want to change this. Thus I add the port configuration
 &nbsp;&nbsp;&nbsp;&nbsp;as below;
 ```
@@ -53,30 +53,30 @@ Let's take a detailed look;
 server.port=8080
 ```
     
-- H2 Database Configuration
-&nbsp;&nbsp;&nbsp;&nbspWe also need to specify whether the console is activated, so that we can use H2 database via the console, create
-&nbsp;&nbsp;&nbsp;&nbsp;our tables and initialize our db entries.
-    
+## H2 Database Configuration
+ &nbsp;&nbsp;&nbsp;&nbspWe also need to specify whether the console is activated, so that we can use H2 database via the console, create
+&nbsp;&nbsp;&nbsp;&nbsp;our tables and initialize our db entries.  
 ```
+
 #H2 configuration
 spring.h2.console.enabled=true
 spring.h2.console.path=/h2
 ```
 
-- DataSource Configuration
+## DataSource Configuration
 &nbsp;&nbsp;&nbsp;&nbsp;Instead of writing a connection string, we are defining the parameters via our properties file as below;
 &nbsp;&nbsp;&nbsp;&nbsp;Notify that we defined our database as a file and the name of the database is "consultantapi". We are going to use it when
 &nbsp;&nbsp;&nbsp;&nbsp;we need to connect the database via the console;
 
 ```
-#Data source configuration
+##Data source configuration
 spring.datasource.url=jdbc:h2:mem:testdb
 spring.datasource.username=sa
 spring.datasource.password=
 spring.datasource.driver-class-name=org.h2.Driver
 ```
 
-- Spring Security Configuration
+## Spring Security Configuration
 &nbsp;&nbsp;&nbsp;&nbsp;To make our application secure, We have used Spring Security.
 &nbsp;&nbsp;&nbsp;&nbsp;We have defined the authentication Url's, JWT token, password, refresh token Url's, token expiry time etc in our application.properties file
 &nbsp;&nbsp;&nbsp;&nbsp;This ensures our application and various URI's exposed much secure.
