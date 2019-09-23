@@ -1,0 +1,10 @@
+
+Fsquid:S5411>"*Use the primitive boolean expression here.(ΡΟΐÿÿÿÿÿ
+tsquid:UselessImportCheck"PRemove this unused import 'org.springframework.web.bind.annotation.CrossOrigin'.(Ί΄Ρ†
+Ξ%squid:RedundantThrowsDeclarationCheck,"Remove the declaration of thrown exception 'com.chandan.recipe.webservices.recipeservice.jwt.resource.AuthenticationException' which is a runtime exception.(οΑ
+=squid:S1452+"&Remove usage of generic wildcard type.(‘Ο
+asquid:S4488*"JReplace "@RequestMapping(method = RequestMethod.POST)" with "@PostMapping"(™ώ»‘
+=squid:S14528"&Remove usage of generic wildcard type.(Δ©ώς
+Osquid:S1854<"8Remove this useless assignment to local variable "user".(‹›™¨
+dsquid:S44887"HReplace "@RequestMapping(method = RequestMethod.GET)" with "@GetMapping"(Ι–Ρύÿÿÿÿ
+@squid:S1481<")Remove this unused "user" local variable.(‹›™¨
